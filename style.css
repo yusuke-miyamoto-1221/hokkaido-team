@@ -1,0 +1,512 @@
+/* ============================================
+   北海道・新産業共創担当 LP — たたき台 v0.1
+   会社トップページ改修案のテイストに準拠
+   ============================================ */
+
+:root {
+  --orange-primary: #E85A1E;
+  --orange-deep: #C94814;
+  --yellow-accent: #F5C13F;
+  --yellow-soft: #FFF8E0;
+  --bg-base: #FAF5EE;
+  --bg-section-light: #F4F0E8;
+  --bg-card-blue: #E8EEF2;
+  --bg-card-blue-deep: #DCE5EB;
+  --text-dark: #2C2A2A;
+  --text-mid: #555555;
+  --text-light: #8C8C8C;
+  --footer-dark: #3A3838;
+  --line-thin: #E5DFD3;
+  --white: #FFFFFF;
+
+  --font-sans: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", sans-serif;
+  --font-mono: "JetBrains Mono", "Courier New", monospace;
+
+  --max-width: 1080px;
+  --section-pad-y: 96px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-sans);
+  color: var(--text-dark);
+  background: var(--bg-base);
+  line-height: 1.8;
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+/* ========== 共通要素 ========== */
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.code-label {
+  font-family: var(--font-mono);
+  color: var(--orange-primary);
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.code-label::before {
+  content: ">>> ";
+}
+
+.section-title {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin-bottom: 48px;
+}
+
+.section-title-center {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.section-title-center .label-bracket {
+  display: inline-block;
+  padding: 0 16px;
+}
+
+.section-title-center .label-bracket::before { content: "[ "; color: var(--orange-primary); }
+.section-title-center .label-bracket::after  { content: " ]"; color: var(--orange-primary); }
+
+.cta-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  background: #1A1A1A;
+  color: #fff;
+  padding: 14px 28px 14px 32px;
+  border-radius: 999px;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.cta-pill:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+.cta-pill .arrow {
+  width: 22px; height: 22px;
+  background: #fff;
+  color: #1A1A1A;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+/* ========== ヘッダー ========== */
+
+.site-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  background: rgba(250, 245, 238, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 100;
+  border-bottom: 1px solid var(--line-thin);
+}
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+.site-header .logo {
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.02em;
+}
+.site-header .logo .mark {
+  color: var(--orange-primary);
+  margin-right: 6px;
+}
+.site-header nav {
+  display: flex;
+  gap: 32px;
+  font-size: 14px;
+}
+.site-header nav a:hover {
+  color: var(--orange-primary);
+}
+
+/* ========== HERO ========== */
+
+.hero {
+  position: relative;
+  padding: 160px 0 120px;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 75% 45%, rgba(245, 193, 63, 0.35) 0%, transparent 55%),
+    radial-gradient(ellipse at 30% 70%, rgba(232, 90, 30, 0.08) 0%, transparent 50%),
+    linear-gradient(180deg, #F8F2E5 0%, #FAF5EE 100%);
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -10%;
+  width: 60%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent 45%, rgba(232, 90, 30, 0.15) 50%, transparent 55%);
+  transform: rotate(-25deg);
+  pointer-events: none;
+}
+
+.hero .container { position: relative; z-index: 2; }
+
+.hero-title {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 0.06em;
+  max-width: 700px;
+}
+.hero-title .accent { color: var(--orange-primary); }
+
+.hero-sub {
+  margin-top: 24px;
+  font-size: 16px;
+  color: var(--text-mid);
+  max-width: 600px;
+}
+
+.hero-photos {
+  position: absolute;
+  top: 140px;
+  right: 6%;
+  width: 480px;
+  height: 480px;
+  pointer-events: none;
+}
+.hero-photo {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--bg-card-blue);
+  border: 6px solid #fff;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+.hero-photo.p1 { width: 130px; height: 130px; top: 0;    left: 80px;  background: linear-gradient(135deg, #C8D4E0, #A8B8C8); }
+.hero-photo.p2 { width: 90px;  height: 90px;  top: 60px;  right: 40px; background: linear-gradient(135deg, #B0C0D0, #909EAF); }
+.hero-photo.p3 { width: 110px; height: 110px; top: 200px; left: 30px;  background: linear-gradient(135deg, #D8C8B0, #BFA888); }
+.hero-photo.p4 { width: 160px; height: 160px; top: 240px; right: 60px; background: linear-gradient(135deg, #BCA88C, #8B7958); }
+.hero-photo.p5 { width: 100px; height: 100px; bottom: 0;  left: 160px; background: linear-gradient(135deg, #C0CFDA, #98ABB8); }
+
+/* ========== ABOUT ========== */
+
+.about {
+  padding: var(--section-pad-y) 0;
+  background: #fff;
+}
+.about-frame {
+  display: inline-block;
+  border: 2px solid var(--orange-primary);
+  padding: 10px 24px;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--text-dark);
+  margin-bottom: 24px;
+}
+.about-frame::before { content: "[ "; color: var(--orange-primary); }
+.about-frame::after  { content: " ]"; color: var(--orange-primary); }
+
+.about-body {
+  font-size: 16px;
+  line-height: 2;
+  color: var(--text-mid);
+  max-width: 720px;
+  margin-bottom: 32px;
+}
+
+.about-keywords {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+.about-keywords .tag {
+  background: var(--yellow-soft);
+  color: var(--text-dark);
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+}
+
+/* ========== BUSINESS（事業単位カード） ========== */
+
+.business {
+  padding: var(--section-pad-y) 0;
+  background: var(--bg-section-light);
+  position: relative;
+}
+.business-intro {
+  font-size: 15px;
+  color: var(--text-mid);
+  max-width: 720px;
+  margin-bottom: 56px;
+  line-height: 2;
+}
+
+.biz-card {
+  background: #fff;
+  border-radius: 16px;
+  display: grid;
+  grid-template-columns: 280px 1fr auto;
+  align-items: center;
+  gap: 32px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.biz-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.07);
+}
+
+.biz-photo {
+  width: 280px;
+  height: 180px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #C8D4E0, #909EAF);
+  flex-shrink: 0;
+}
+.biz-photo.akatsuki    { background: linear-gradient(135deg, #F0A878, #D86848); }
+.biz-photo.semiconductor { background: linear-gradient(135deg, #4A6E8C, #2B4660); }
+.biz-photo.data         { background: linear-gradient(135deg, #88B098, #4F7868); }
+.biz-photo.iown         { background: linear-gradient(135deg, #B0A0D0, #7868A0); }
+
+.biz-body {
+  flex: 1;
+  padding-right: 16px;
+}
+.biz-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--orange-primary);
+  position: relative;
+  padding-left: 16px;
+  margin-bottom: 12px;
+}
+.biz-title::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 4px;
+  width: 4px;
+  height: 22px;
+  background: var(--orange-primary);
+}
+.biz-catch {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 10px;
+}
+.biz-desc {
+  font-size: 13px;
+  color: var(--text-mid);
+  line-height: 1.9;
+  margin-bottom: 14px;
+}
+.biz-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.biz-tags .tag {
+  background: var(--yellow-soft);
+  color: var(--text-dark);
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+.biz-arrow {
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--text-light);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-mid);
+  flex-shrink: 0;
+  transition: background 0.2s, color 0.2s;
+}
+.biz-card:hover .biz-arrow {
+  background: var(--orange-primary);
+  color: #fff;
+  border-color: var(--orange-primary);
+}
+
+/* ========== SEMINAR ========== */
+
+.seminar {
+  padding: var(--section-pad-y) 0;
+  background: var(--bg-base);
+}
+.seminar-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.sem-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.sem-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+.sem-thumb {
+  width: 100%;
+  height: 180px;
+  background: linear-gradient(135deg, #C8D4E0, #909EAF);
+}
+.sem-body { padding: 20px; }
+.sem-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 12px;
+  color: var(--text-light);
+}
+.sem-cat {
+  color: var(--orange-primary);
+  font-weight: 600;
+}
+.sem-title {
+  font-size: 14px;
+  line-height: 1.6;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--text-dark);
+}
+.sem-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.sem-tags span {
+  background: var(--bg-card-blue);
+  color: var(--text-dark);
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 3px;
+}
+
+/* ========== CONTACT ========== */
+
+.contact {
+  padding: var(--section-pad-y) 0;
+  background: #fff;
+  text-align: center;
+}
+.contact-box {
+  border: 1px solid var(--line-thin);
+  border-radius: 16px;
+  padding: 80px 32px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.contact-code {
+  font-family: var(--font-mono);
+  color: var(--orange-primary);
+  font-size: 36px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.contact-code::before { content: ">>> "; }
+.contact-jp {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+.contact-body {
+  color: var(--text-mid);
+  margin-bottom: 32px;
+  line-height: 2;
+}
+
+/* ========== フッター ========== */
+
+.site-footer {
+  background: var(--footer-dark);
+  color: #ccc;
+  padding: 64px 0 24px;
+  font-size: 13px;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 2fr 1fr;
+  gap: 48px;
+  margin-bottom: 48px;
+}
+.footer-grid h4 {
+  color: #fff;
+  font-size: 14px;
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+.footer-grid ul { list-style: none; }
+.footer-grid li { margin-bottom: 8px; line-height: 1.8; }
+.footer-grid a:hover { color: var(--orange-primary); }
+.footer-bottom {
+  border-top: 1px solid #555;
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  color: #999;
+  font-size: 12px;
+}
+.footer-bottom .links { display: flex; gap: 24px; }
+
+/* ========== レスポンシブ ========== */
+
+@media (max-width: 900px) {
+  :root { --section-pad-y: 64px; }
+  .hero-title { font-size: 32px; }
+  .hero-photos { display: none; }
+  .biz-card {
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
+  .biz-photo { width: 100%; height: 200px; }
+  .biz-arrow { justify-self: flex-end; }
+  .seminar-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+  .site-header nav { display: none; }
+}
+
+/* ========== 議論ポイントマーカー（担当用・本番では削除） ========== */
+
+.discuss-marker {
+  background: rgba(232, 90, 30, 0.08);
+  border-left: 3px solid var(--orange-primary);
+  padding: 4px 12px;
+  margin: 8px 0;
+  font-size: 12px;
+  color: var(--orange-deep);
+  border-radius: 0 4px 4px 0;
+}
+.discuss-marker::before {
+  content: "💬 DISCUSS: ";
+  font-weight: 700;
+}

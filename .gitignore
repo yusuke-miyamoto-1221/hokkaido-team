@@ -1,0 +1,5 @@
+design-ref/
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
