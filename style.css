@@ -128,14 +128,10 @@ img { max-width: 100%; display: block; }
   justify-content: space-between;
   height: 64px;
 }
-.site-header .logo {
-  font-weight: 700;
-  font-size: 16px;
-  letter-spacing: 0.02em;
-}
-.site-header .logo .mark {
-  color: var(--orange-primary);
-  margin-right: 6px;
+.site-header .logo img {
+  height: 22px;
+  width: auto;
+  display: block;
 }
 .site-header nav {
   display: flex;
