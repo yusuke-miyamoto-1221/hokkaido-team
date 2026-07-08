@@ -3,3 +3,9 @@ design-ref/
 Thumbs.db
 *.log
 .vscode/
+
+# メンバーボード（Cloudflare Workers/D1へ別デプロイ。GitHub Pages公開リポジトリには含めない）
+# BOARD_USER等の認証情報を公開しないため。デプロイは board/ 内で npx wrangler deploy
+board/
+node_modules/
+.wrangler/
