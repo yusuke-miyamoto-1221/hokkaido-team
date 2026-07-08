@@ -413,11 +413,19 @@ img { max-width: 100%; display: block; }
   margin-bottom: 32px;
   max-width: 800px;
 }
+.focus-columns {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 32px;
+  align-items: start;
+  margin-bottom: 40px;
+}
 .focus-info {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px 24px;
-  margin-bottom: 40px;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  min-width: 0;
+  margin: 0;
 }
 .focus-info-item {
   background: #fff;
@@ -471,29 +479,48 @@ img { max-width: 100%; display: block; }
   font-size: 14px;
   color: var(--text-mid);
   line-height: 2;
-  margin-bottom: 28px;
   max-width: 800px;
 }
-.focus-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--orange-deep);
+
+/* 支援地域マップ（北海道） */
+.focus-map {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px 20px 16px;
+  margin: 0;
+  min-width: 0;
 }
-.focus-link:hover { text-decoration: underline; }
-.focus-link .arrow {
-  width: 20px;
-  height: 20px;
-  background: var(--orange-primary);
-  color: #fff;
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 10px;
-  font-weight: bold;
+.focus-map svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.map-land {
+  fill: var(--yellow-soft);
+  stroke: var(--yellow-accent);
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+.map-pin {
+  fill: var(--orange-primary);
+  stroke: #fff;
+  stroke-width: 2;
+}
+.map-label {
+  font-size: 12px;
+  font-weight: 700;
+  fill: var(--text-dark);
+  font-family: var(--font-sans);
+}
+.map-leader {
+  stroke: var(--text-light);
+  stroke-width: 1;
+}
+.focus-map figcaption {
+  font-size: 11px;
+  color: var(--text-light);
+  margin-top: 10px;
+  line-height: 1.7;
 }
 
 /* ========== SEMINAR ========== */
@@ -523,6 +550,9 @@ img { max-width: 100%; display: block; }
   height: 180px;
   background: linear-gradient(135deg, #C8D4E0, #909EAF);
 }
+.sem-thumb.scs  { background: linear-gradient(135deg, #B0A0D0, #7868A0); }
+.sem-thumb.semi { background: linear-gradient(135deg, #4A6E8C, #2B4660); }
+.sem-thumb.data { background: linear-gradient(135deg, #88B098, #4F7868); }
 .sem-body { padding: 20px; }
 .sem-meta {
   display: flex;
@@ -554,14 +584,10 @@ img { max-width: 100%; display: block; }
   padding: 2px 8px;
   border-radius: 3px;
 }
-.seminar-empty {
-  background: #fff;
-  border: 1px dashed var(--line-thin);
-  border-radius: 12px;
-  padding: 48px 24px;
-  text-align: center;
-  color: var(--text-mid);
-  font-size: 14px;
+.seminar-note {
+  margin-top: 24px;
+  font-size: 12px;
+  color: var(--text-light);
 }
 
 /* ========== CONTACT ========== */
@@ -644,7 +670,7 @@ img { max-width: 100%; display: block; }
   .seminar-grid { grid-template-columns: 1fr; }
   .focus-card { padding: 28px 20px; }
   .focus-title { font-size: 19px; }
-  .focus-info { grid-template-columns: 1fr; }
+  .focus-columns { grid-template-columns: 1fr; }
   .focus-supports { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; gap: 24px; }
   .site-header nav { display: none; }
